@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
+    <title>Summarizer</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    <table align="center">
+        <th colspan="4"> <h1><center> Welcome to Summarizer home page </center></h1> </th>
+        <tr>
+            <td><a href="{% url 'add' %}">Add article</a></td>
+            
+        </tr>
+    </table><br/>
+
+    <table>
+        <th>Projects:</th>
+        {% for proj in project %}
+        <tr>
+            <td> {{proj}} </td>
+            <td><a href="{% url 'view' proj.id %}">View article</a></td>
+            <td><a href="{% url 'edit' proj.id %}">Edit article</a></td>
+            <td><a href="{% url 'delete' proj.id %}">Delete article</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- {{ form.as_p }} -->
+    {% if messages %}
+        <div class="messages">
+        <center>
+            {% for message in messages %}
+                <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+            {% endfor %}
+        </center>
+        </div>
+    {% endif %}
+
+    <h2>Article Name:<input type="text" name="name" placeholder="Enter article name"/></h2>
+    <h2>Article content:<textarea name="prompt" placeholder="Copy pase article content here" cols="50" rows="20"></textarea></h2>
+    <select name="engine">
+        <option name="New-davinci">New Instruct Davinci</option>
+        <option name="Old-davinci">Instruct Davinci</option>
+        <option name="Curie">Instruct Curie</option>
+    </select>
+    <input type="submit" value="Add"/>
+
+</form>
+
+{% endblock %}

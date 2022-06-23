@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% for f in form %}
+
+    <table>
+        <tr> {{ f.label }}: </tr>
+        <td> {{ f }} </td>
+        
+    </table>
+
+{% endfor %}
+
+
+{% endblock %}
+
